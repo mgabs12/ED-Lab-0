@@ -4,7 +4,7 @@ namespace Lab0.Models
 {
     public class DatosCliente
     {
-        public string name = "Mario";
+        public string name;
         public string lastName;
         public int phoneNumber;
         public string description;
@@ -20,7 +20,7 @@ namespace Lab0.Models
 
     public class Cliente
     {
-        public List<DatosCliente> listaClientes = new List<DatosCliente>()
+        public static List<DatosCliente> listaClientes = new List<DatosCliente>()
         {
             new DatosCliente("Juan", "Gutierrez", 11111111, "Venta de zapatos"),
             new DatosCliente("Pedro", "Lopez", 55555555, "Pendiente de pago"),
@@ -34,29 +34,28 @@ namespace Lab0.Models
             new DatosCliente("Michael", "Vargas", 99999999, "Venta de ropa"),
         };
 
-        public string showClientes()
+        public static List<DatosCliente> sortByName()
         {
-            string text = "";
-            // 1. add all the data from the list to the string
-            // 2. use sort function by name (just call the function)
-            // 3. add all the data from the list to the string
-            // 4. use sort function by last name (just call the function)
-            // 5. add all the data from the list to the string
-            // *** format the text as you want but make sure that is readeble, each sort separated and with a "title" that indicates wich sort it is
+            List<DatosCliente> newList = new List<DatosCliente>();
+            return newList;
+        }
 
-            return text;
+        public static List<DatosCliente> sortByLastName()
+        {
+            List<DatosCliente> newList = new List<DatosCliente>();
+            return newList;            
         }
 
         public void sortClientes(bool byName = false)
         {
             int n = listaClientes.Count;
-            for (int interval = n/2; interval > 0; interval /= 2)
+            for (int interval = n / 2; interval > 0; interval /= 2)
             {
-                for(int i = interval; i < n; i += 1)
+                for (int i = interval; i < n; i += 1)
                 {
                     string temp = listaClientes[i].name;
                     int j;
-                    for(j = i; j>= interval && listaClientes[j-interval].name> temp; j -= interval)
+                    for (j = i; j >= interval && listaClientes[j - interval].name > temp; j -= interval)
                     {
                         listaClientes[j].name = listaClientes[j - interval].name;
                     }

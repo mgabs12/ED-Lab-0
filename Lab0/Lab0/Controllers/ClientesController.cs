@@ -5,28 +5,19 @@ namespace Lab0.Controllers
 {
     public class ClientesController : Controller
     {
-        Cliente scripts = new Cliente();
-        public IActionResult Index()
+        public IActionResult DefaultList()
         {
             return View();
         }
 
-        [Route("api/defaultList")]
-        public string showList()
+        public IActionResult SortByName()
         {
-            return "";
+            return View();
         }
 
-        [Route("api/sortedList/name")]
-        public string showListSortedByName()
+        public IActionResult SortByLastName()
         {
-            return "";
-        }
-
-        [Route("api/sortedList/lastName")]
-        public string showListSortedByLastName()
-        {
-            return "";
+            return View();
         }
     }
 }
