@@ -5,51 +5,19 @@ namespace Lab0.Controllers
 {
     public class ClientesController : Controller
     {
-        public string DefaultList()
+        public IActionResult DefaultList()
         {
-            Cliente scripts = new Cliente();
-            string text = "";
-            for (int i = 0; i < scripts.Count(); i++)
-            {
-                text += listaClientes[i].name + ", ";
-                text += listaClientes[i].lastName + ", ";
-                text += listaClientes[i].phoneNumber.ToString() + ", ";
-                text += listaClientes[i].description + "." + "\n";
-            }
-           
-            return text;
+            return View();
         }
 
-        public string SortByName()
+        public IActionResult SortByName()
         {
-            Cliente scripts = new Cliente();
-            scripts.sortClientes();
-            text += "\n" + "Nombre";
-            text += " " + "\n";
-            for (int i = 0; i < scripts.Count(); i++)
-            {
-                text += listaClientes[i].name + ", ";
-                text += listaClientes[i].lastName + ", ";
-                text += listaClientes[i].phoneNumber.ToString() + ", ";
-                text += listaClientes[i].description + "." + "\n";
-            }
-            return text;
+            return View();
         }
 
-        public string SortByLastName()
+        public IActionResult SortByLastName()
         {
-            Cliente scripts = new Cliente();
-            scripts.sortClientes();
-            text += "\n" + "Nombre";
-            text += " " + "\n";
-            for (int i = 0; i < scripts.Count(); i++)
-            {
-                text += listaClientes[i].name + ", ";
-                text += listaClientes[i].lastName + ", ";
-                text += listaClientes[i].phoneNumber.ToString() + ", ";
-                text += listaClientes[i].description + "." + "\n";
-            }
-            return text;
+            return View();
         }
     }
 }

@@ -37,47 +37,59 @@ namespace Lab0.Models
         public static List<DatosCliente> sortByName()
         {
             List<DatosCliente> newList = new List<DatosCliente>();
+            for(int i = 0; i < listaClientes.Count(); i++)
+            {
+                newList.Add(listaClientes[i]);
+            }
+            //newList.sortClientesN();
+            listaClientes.sortClientesN(newList);
             return newList;
         }
 
         public static List<DatosCliente> sortByLastName()
         {
             List<DatosCliente> newList = new List<DatosCliente>();
+            for (int i = 0; i < listaClientes.Count(); i++)
+            {
+                newList.Add(listaClientes[i]);
+            }
+            //newList.sortClientesL();
+            listaClientes.sortClientesL(newList);
             return newList;            
         }
 
-        public void sortClientes(bool byName = false)
+        public void sortClientesN(bool byName = false, List<DatosCliente> Nuevo)
         {
-            int n = listaClientes.Count;
+            int n = Nuevo.Count;
             for (int interval = n / 2; interval > 0; interval /= 2)
             {
                 for (int i = interval; i < n; i += 1)
                 {
-                    string temp = listaClientes[i].name;
+                    string temp = Nuevo[i].name;
                     int j;
-                    for (j = i; j >= interval && listaClientes[j - interval].name > temp; j -= interval)
+                    for (j = i; j >= interval && Nuevo[j - interval].name > temp; j -= interval)
                     {
-                        listaClientes[j].name = listaClientes[j - interval].name;
+                        Nuevo[j].name = Nuevo[j - interval].name;
                     }
-                    listaClientes[j].name = temp;
+                    Nuevo[j].name = temp;
                 }
             }
         }
 
-        public void sortClientes(bool byLastName = false) //Shell sort
+        public void sortClientesL(bool byLastName = false, List<DatosCliente> Nuevo) //Shell sort
         {
-            int n = listaClientes.Count;
+            int n = Nuevo.Count;
             for (int interval = n / 2; interval > 0; interval /= 2)
             {
                 for (int i = interval; i < n; i += 1)
                 {
-                    string temp = listaClientes[i].lastName;
+                    string temp = Nuevo[i].lastName;
                     int j;
-                    for (j = i; j >= interval && listaClientes[j - interval].lastName > temp; j -= interval)
+                    for (j = i; j >= interval && Nuevo[j - interval].lastName > temp; j -= interval)
                     {
-                        listaClientes[j].lastName = listaClientes[j - interval].lastName;
+                        Nuevo[j].lastName = Nuevo[j - interval].lastName;
                     }
-                    listaClientes[j].lastName = temp;
+                    Nuevo[j].lastName = temp;
                 }
             }
         }
