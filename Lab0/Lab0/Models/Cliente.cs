@@ -30,7 +30,7 @@ namespace Lab0.Models
             new DatosCliente("Flor", "Rojas", 87654321, "Venta de baterias"),
             new DatosCliente("Enrique", "Moreno", 12312312, "Pendiente de pago"),
             new DatosCliente("Abril", "Dominguez", 78978978, "Entrega de pastel"),
-            new DatosCliente("Guillermo", "Blanco", 01010101, "Venta de zapatos"),
+            new DatosCliente("Guillermo", "Blanco", 10101010, "Venta de zapatos"),
             new DatosCliente("Michael", "Vargas", 99999999, "Venta de ropa"),
         };
 
