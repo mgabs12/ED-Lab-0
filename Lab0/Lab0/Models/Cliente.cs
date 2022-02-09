@@ -58,6 +58,7 @@ namespace Lab0.Models
             return newList;            
         }
 
+       
         public void sortClientesN(bool byName = false, List<DatosCliente> Nuevo)
         {
             int n = Nuevo.Count;
@@ -66,9 +67,23 @@ namespace Lab0.Models
                 for (int i = interval; i < n; i += 1)
                 {
                     string temp = Nuevo[i].name;
-                    int j;
-                    for (j = i; j >= interval && Nuevo[j - interval].name > temp; j -= interval)
+                    int j = 0;
+                    //for (j = i; j >= interval ; j -= interval)
+                    //{
+                    // Nuevo[j].name = Nuevo[j - interval].name;
+                    //}
+                    //Nuevo[j].name = temp;
+                    int temp1 = Convert.ToInt32(temp.ToString());
+                    int Nvo = Convert.ToInt32(Nuevo.ToString());
+                    if (Nvo > temp1)
                     {
+                        bool name = true;
+                        Nuevo[j].name = Nuevo[j - interval].name;
+                    }
+                    //Nuevo[j].name = temp;
+                    else if (Nvo < temp1)
+                    {
+                        bool name = false;
                         Nuevo[j].name = Nuevo[j - interval].name;
                     }
                     Nuevo[j].name = temp;
