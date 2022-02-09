@@ -16,7 +16,7 @@
             <td>Descripción</td>
         </tr>
     </thead>
-    @foreach (var cliente in Cliente.sortByLastName()){
+    @foreach (var cliente in Cliente.showList()){
         <tr>
             <td>@cliente.name</td>
             <td>@cliente.lastName</td>

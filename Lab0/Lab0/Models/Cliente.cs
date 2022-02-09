@@ -34,79 +34,81 @@ namespace Lab0.Models
             new DatosCliente("Michael", "Vargas", 99999999, "Venta de ropa"),
         };
 
-        public static List<DatosCliente> sortByName()
-        {
-            List<DatosCliente> newList = new List<DatosCliente>();
-            for(int i = 0; i < listaClientes.Count(); i++)
-            {
-                newList.Add(listaClientes[i]);
-            }
-            //newList.sortClientesN();
-            listaClientes.sortClientesN(newList);
-            return newList;
-        }
-
-        public static List<DatosCliente> sortByLastName()
+        public static List<DatosCliente> showList(bool byName = false)
         {
             List<DatosCliente> newList = new List<DatosCliente>();
             for (int i = 0; i < listaClientes.Count(); i++)
             {
-                newList.Add(listaClientes[i]);
+                DatosCliente newObj = listaClientes[i];
+                newList.Add(newObj);
             }
-            //newList.sortClientesL();
-            listaClientes.sortClientesL(newList);
-            return newList;            
+
+            if (byName)
+            {
+                shellSort(newList, true);
+            }
+            else
+            {
+                shellSort(newList);
+            }
+
+            return newList;
         }
 
-       
-        public void sortClientesN(bool byName = false, List<DatosCliente> Nuevo)
+        public static void shellSort(List<DatosCliente> list, bool byName = false)
         {
-            int n = Nuevo.Count;
+            int n = list.Count;
             for (int interval = n / 2; interval > 0; interval /= 2)
             {
                 for (int i = interval; i < n; i += 1)
                 {
-                    string temp = Nuevo[i].name;
-                    int j = 0;
-                    //for (j = i; j >= interval ; j -= interval)
-                    //{
-                    // Nuevo[j].name = Nuevo[j - interval].name;
-                    //}
-                    //Nuevo[j].name = temp;
-                    int temp1 = Convert.ToInt32(temp.ToString());
-                    int Nvo = Convert.ToInt32(Nuevo.ToString());
-                    if (Nvo > temp1)
-                    {
-                        bool name = true;
-                        Nuevo[j].name = Nuevo[j - interval].name;
-                    }
-                    //Nuevo[j].name = temp;
-                    else if (Nvo < temp1)
-                    {
-                        bool name = false;
-                        Nuevo[j].name = Nuevo[j - interval].name;
-                    }
-                    Nuevo[j].name = temp;
-                }
-            }
-        }
-
-        public void sortClientesL(bool byLastName = false, List<DatosCliente> Nuevo) //Shell sort
-        {
-            int n = Nuevo.Count;
-            for (int interval = n / 2; interval > 0; interval /= 2)
-            {
-                for (int i = interval; i < n; i += 1)
-                {
-                    string temp = Nuevo[i].lastName;
+                    DatosCliente temp = list[i];
                     int j;
-                    for (j = i; j >= interval && Nuevo[j - interval].lastName > temp; j -= interval)
+                    if (byName)
                     {
-                        Nuevo[j].lastName = Nuevo[j - interval].lastName;
+                        for (j = i; j >= interval && compareStrings(temp.name, list[j - interval].name); j -= interval)
+                        {
+                            list[j] = list[j - interval];
+                        }
+                        list[j] = temp;
                     }
-                    Nuevo[j].lastName = temp;
+                    else
+                    {
+                        for (j = i; j >= interval && compareStrings(temp.lastName, list[j - interval].lastName); j -= interval)
+                        {
+                            list[j] = list[j - interval];
+                        }
+                        list[j] = temp;
+                    }
                 }
             }
+        }
+
+        public static bool compareStrings(string text1, string text2)
+        {
+            // returns true if text1 goes first than text2
+            if (text1 == text2) return false;
+
+            int n = text1.Length;
+            if (text2.Length < text1.Length)
+            {
+                n = text2.Length;
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                if ((int)text1[i] < (int)text2[i])
+                {
+                    return true;
+                }
+                if ((int)text1[i] > (int)text2[i])
+                {
+                    return false;
+                }
+            }
+
+            if (text1.Length < text2.Length) return true;
+            else return false;
         }
     }
 }
